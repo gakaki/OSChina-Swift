@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B873B50B1B72EAFC007B0B93 /* ThemeColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873B50A1B72EAFC007B0B93 /* ThemeColorExtension.swift */; };
+		B873B50E1B73192C007B0B93 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873B50D1B73192C007B0B93 /* ViewExtension.swift */; };
 		B8B65B241B723EEF00FB47FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B65B231B723EEF00FB47FB /* AppDelegate.swift */; };
 		B8B65B2B1B723EEF00FB47FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8B65B2A1B723EEF00FB47FB /* Images.xcassets */; };
 		B8B65B2E1B723EEF00FB47FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B65B2C1B723EEF00FB47FB /* LaunchScreen.xib */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B873B50A1B72EAFC007B0B93 /* ThemeColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorExtension.swift; sourceTree = "<group>"; };
+		B873B50D1B73192C007B0B93 /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		B8B65B1E1B723EEF00FB47FB /* OSChina-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OSChina-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B65B221B723EEF00FB47FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8B65B231B723EEF00FB47FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B873B50C1B731911007B0B93 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B873B50A1B72EAFC007B0B93 /* ThemeColorExtension.swift */,
+				B873B50D1B73192C007B0B93 /* ViewExtension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		B8B65B151B723EEF00FB47FB = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +156,7 @@
 				B8B65B541B72567B00FB47FB /* API.swift */,
 				B8B65B591B72593300FB47FB /* MacroDefine.swift */,
 				B8B65B771B726D7C00FB47FB /* Tools.swift */,
+				B873B50C1B731911007B0B93 /* Extension */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -306,6 +320,8 @@
 				B8B65B751B725B8200FB47FB /* MainTabBarController.swift in Sources */,
 				B8B65B711B725B6000FB47FB /* MultipleViewController.swift in Sources */,
 				B8B65B691B725B1C00FB47FB /* ExploreViewController.swift in Sources */,
+				B873B50B1B72EAFC007B0B93 /* ThemeColorExtension.swift in Sources */,
+				B873B50E1B73192C007B0B93 /* ViewExtension.swift in Sources */,
 				B8B65B5A1B72593300FB47FB /* MacroDefine.swift in Sources */,
 				B8B65B781B726D7C00FB47FB /* Tools.swift in Sources */,
 				B8B65B6D1B725B3200FB47FB /* TweetsViewController.swift in Sources */,
@@ -497,6 +513,7 @@
 				B8B65B3F1B723EEF00FB47FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8B65B401B723EEF00FB47FB /* Build configuration list for PBXNativeTarget "OSChina-SwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +522,7 @@
 				B8B65B421B723EEF00FB47FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

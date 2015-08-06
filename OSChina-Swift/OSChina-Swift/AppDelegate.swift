@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height))
-        self.window?.backgroundColor = UIColor.redColor()
         self.tabBar = MainTabBarController()
         self.window?.rootViewController = self.tabBar
         self.window?.makeKeyAndVisible()
