@@ -1,0 +1,13 @@
+PODS:
+  - Alamofire (1.3.0)
+  - DynamicBlurView (1.0.5)
+
+DEPENDENCIES:
+  - Alamofire (~> 1.3.0)
+  - DynamicBlurView
+
+SPEC CHECKSUMS:
+  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
+  DynamicBlurView: 206601da0e1345df364ba18651d3730e6eddc99c
+
+COCOAPODS: 0.38.2

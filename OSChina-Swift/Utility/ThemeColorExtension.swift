@@ -27,6 +27,16 @@ extension UIColor {
         return UIColor.UIColorFromRGB(0x209624)
     }
     
+    /**
+    *  随机色
+    */
+    class func randomColor() -> UIColor {
+        var color:CGFloat = CGFloat(CGFloat(random())/CGFloat(RAND_MAX))
+        var color1:CGFloat = CGFloat(CGFloat(random())/CGFloat(RAND_MAX))
+        var color2:CGFloat = CGFloat(CGFloat(random())/CGFloat(RAND_MAX))
+        return UIColor(red: color, green: color1, blue: color2, alpha: 1)
+    }
+    
     
 }
 

@@ -7,10 +7,12 @@
 //
 
 import UIKit
-
+import DynamicBlurView
 class MainTabBarController: UITabBarController,UITabBarControllerDelegate {
     var centerButton:UIButton?
-    var _viewControllers:[UIViewController]?
+    var buttonArr:[UIButton]?
+    var blurView:DynamicBlurView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUI()
@@ -24,6 +26,7 @@ class MainTabBarController: UITabBarController,UITabBarControllerDelegate {
     // MARK: SetterUI
     func setUI() {
         var viewControllers = [UIViewController]()
+        buttonArr = [UIButton]()
         //1
         var multi = MultipleViewController()
         multi.title = "综合"
@@ -65,6 +68,44 @@ class MainTabBarController: UITabBarController,UITabBarControllerDelegate {
         self.tabBar.tintColor = UIColor.selectTitleColor()
         self.tabBar.translucent = false
         self.delegate = self
+        
+        //滤镜
+        blurView = DynamicBlurView(frame: CGRectMake(0, kScreenHeight, kScreenWidth, 270))
+        self.view.addSubview(blurView!)
+        blurView?.blurRadius = 10
+        blurView?.userInteractionEnabled = true
+        var tap = UITapGestureRecognizer(target: self, action:"blurViewClick")
+        blurView?.addGestureRecognizer(tap)
+        blurView?.blendColor = UIColor(white: 0.85, alpha: 1)
+        
+        //下方6个button
+        var titles:[String] = ["文字","相册","拍照","语音","扫一扫","找人"]
+        var imageNames:[String] = ["tweetEditing", "picture", "shooting", "sound", "scan", "search"]
+        var verSpace = 20
+        var shortHorSpace = 35
+        var longHorSpace = 45
+        var btnWidth = (Int(kScreenWidth) - (shortHorSpace + longHorSpace)*2)/3
+        for(var i = 0; i<3; i++){
+            for (var j = 0; j < 2; j++){
+                var index = 2 * j + i
+                var x:Int = shortHorSpace + (btnWidth + longHorSpace) * i
+                var y:Int = verSpace + (btnWidth + 40)*j
+                var btn = MenuButton(frame:CGRectMake(CGFloat(x),kScreenHeight, CGFloat(btnWidth), CGFloat(btnWidth)))
+                btn.fromFrame = CGRectMake(CGFloat(x),kScreenHeight, CGFloat(btnWidth), CGFloat(btnWidth))
+                btn.setImage(UIImage(named: imageNames[index]), forState: UIControlState.Normal)
+                btn.addTarget(self, action: "menuBtnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                var label = UILabel(frame: CGRectMake(0,btn.height()+10, btn.width(),20))
+                label.backgroundColor = UIColor.clearColor()
+                label.text = titles[index]
+                label.textColor = UIColor.whiteColor()
+                label.font = UIFont.systemFontOfSize(15)
+                label.textAlignment = NSTextAlignment.Center
+                btn.addSubview(label)
+                blurView?.addSubview(btn)
+                btn.toFrame = CGRectMake(CGFloat(x),CGFloat(y), CGFloat(btnWidth), CGFloat(btnWidth))
+                buttonArr?.append(btn)
+                }
+            }
     }
     
     
@@ -83,24 +124,48 @@ class MainTabBarController: UITabBarController,UITabBarControllerDelegate {
     }
     
     func centerButtonClick() {
-        println("123123")
+        UIView.animateWithDuration(1, delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 0,
+            options: .AllowUserInteraction,
+            animations: {
+               self.blurView?.frame = CGRectMake(0, kScreenHeight-270, kScreenWidth, 350)
+            }, completion: nil)
+        for item in self.buttonArr!{
+            var btn:MenuButton = item as! MenuButton
+            UIView.animateKeyframesWithDuration(0.2, delay:0, options: .AllowUserInteraction, animations: { () -> Void in
+                btn.frame = btn.toFrame!
+                }, completion:nil)
+        }
     }
-
     
+
+    //MARK:菜单按钮点击事件
+    func menuBtnClick(btn:UIButton) {
+       self.disappearButtn()
+    }
     
     //MARK:SystemDelegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         println("tabbar被点击")
-        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+  
+    func blurViewClick() {
+        self.disappearButtn()
     }
-    */
-
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+       self.disappearButtn()
+    }
+    
+    func disappearButtn() {
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            blurView?.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 270)
+        })
+        for item in self.buttonArr!{
+            var btn:MenuButton = item as! MenuButton
+            UIView .animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: {
+                btn.frame = btn.fromFrame!
+                }, completion:nil)
+        }
+    }
 }

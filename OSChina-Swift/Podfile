@@ -1,0 +1,4 @@
+pod "DynamicBlurView"
+pod 'Alamofire', '~> 1.3.0'
+use_frameworks!
+

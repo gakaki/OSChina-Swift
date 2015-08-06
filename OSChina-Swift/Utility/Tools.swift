@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 class Tools {
-    class func setCorner(view:UIView) {
-        view.layer.masksToBounds = true
-        view.layer.cornerRadius = 6
-    }
+    /**
+    *  我创建的工厂类，可以在此写一些经常用到方法
+    */
+    
 }

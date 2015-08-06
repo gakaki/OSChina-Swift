@@ -10,11 +10,12 @@ import Foundation
 import UIKit
 
 let kScreenWidth    = UIScreen.mainScreen().bounds.size.width
-let kScreenHeight   = UIScreen.mainScreen().bounds.size.width
+let kScreenHeight   = UIScreen.mainScreen().bounds.size.height
 
 
 
-
+func kIS_IOS7() ->Bool { return (UIDevice.currentDevice().systemVersion as NSString).doubleValue >= 7.0 }
+func kIS_IOS8() -> Bool { return (UIDevice.currentDevice().systemVersion as NSString).doubleValue >= 8.0 }
 
 
 

@@ -14,4 +14,31 @@ extension UIView {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = cornerRadius
     }
+    
+    
+    /**
+    *  切圆
+    */
+     func setCircleCorner() {
+       // self.layer.masksToBounds = true
+        self.layer.cornerRadius = self.height()/2
+    }
+    
+
+    /**
+    *  快速读取坐标以及大小
+    */
+    func height() ->CGFloat {
+        return self.frame.size.height
+    }
+    func width() ->CGFloat {
+        return self.frame.size.width
+    }
+    func x() ->CGFloat {
+        return self.frame.origin.x
+    }
+    func y() ->CGFloat {
+        return self.frame.origin.y
+    }
+    
 }
